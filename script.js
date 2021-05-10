@@ -120,8 +120,24 @@ window.addEventListener("DOMContentLoaded", () => {
     // FUNCTION: resetGameboard() --> add event listener to #reset button on click
     resetBtn.addEventListener("click", function resetGameboard() {
         // loop through all gameboard tiles and remove any classes that are not gameTile
+        let gameTiles = document.getElementsByClassName("gameTile")
+
+        for (let i = 0; i < gameTiles.length; i++) {
+            gameTiles[i].classList = "gameTile"
+            gameTiles[i].innerText = ""
+        }
+    
         // update player turn message as if game has re-started; player x plays first
+        displayTurn.innerText = "Player X goes first."
+        displayResults.innerText = ""
+
         // re-set all starting variables to initial values
+        let turnNum = 0
+        let playerX = []
+        let playerO = []
+
+        // add back click event listener to gameboard
+        gameboard.addEventListener("click", boxClick)
     })
 })
     
