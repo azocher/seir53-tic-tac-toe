@@ -69,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
             if (turnNum === 9) {
                 displayResults.innerText = "GAME TIED"
                 displayTurn.innerText = "PLAY AGAIN"
+                stopGame()
             }
         }
     }
@@ -76,6 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
     gameboard.addEventListener("click", boxClick)
 
     // FUNCTION: gameOver() --> checks if winner of game
+    //// check and see if there is a winner on every turn
     function gameOver() {
         // loop through all possible win combos (winCombo array)
         for (let i = 0; i < winCombo.length; i++) {
@@ -84,14 +86,16 @@ window.addEventListener("DOMContentLoaded", () => {
           // if user has had any matches for x or O so far AKA declare count for x and O
           let winFoundX = 0
           let winFoundO = 0
-      
           // loop through individual win combo
           for (let y = 0; y < winCombo[i].length; y++) {
             //console.log(`Current id: ${winCombo[i][y]}`)
             if (playerX.includes(winCombo[i][y])){
               winFoundX++
               if (winFoundX === 3) {
+                ////// send message to displayResults div and displayTurn div
                 displayResults.innerText = "X has won the game!"
+                displayTurn.innerText = ""
+                //// if player has won, run stopGame()
                 stopGame()
               }
             }
@@ -100,6 +104,7 @@ window.addEventListener("DOMContentLoaded", () => {
               winFoundO++
               if (winFoundO === 3) {
                 displayResults.innerText = "O has won the game!"
+                displayTurn.innerText = ""
                 stopGame()
               }
             }
@@ -107,17 +112,16 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-    //// check and see if there is a winner on every turn
-    //// if player has won, run stopGame()
-    ////// send message to displayResults div and displayTurn div
-
     // FUNCTION: stopGame() --> doesn't allow for further game play once game won
     function stopGame() {
         gameboard.removeEventListener("click", boxClick)
     }
 
     // FUNCTION: resetGameboard() --> add event listener to #reset button on click
-    //// loops through gameboard; resets all variables
-
+    resetBtn.addEventListener("click", function resetGameboard() {
+        // loop through all gameboard tiles and remove any classes that are not gameTile
+        // update player turn message as if game has re-started; player x plays first
+        // re-set all starting variables to initial values
+    })
 })
     
