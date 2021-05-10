@@ -67,9 +67,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
             //// check and see if there have been x9 turns but no winner; call tied game
             if (turnNum === 9) {
-                displayResults.innerText = "GAME TIED"
-                displayTurn.innerText = "PLAY AGAIN"
-                stopGame()
+                gameOver()
+
+                if (displayTurn.innerText !== "") {
+                    displayResults.innerText = "GAME TIED"
+                    displayTurn.innerText = "PLAY AGAIN"
+                    stopGame()
+                }
             }
         }
     }
@@ -132,9 +136,9 @@ window.addEventListener("DOMContentLoaded", () => {
         displayResults.innerText = ""
 
         // re-set all starting variables to initial values
-        let turnNum = 0
-        let playerX = []
-        let playerO = []
+        turnNum = 0
+        playerX = []
+        playerO = []
 
         // add back click event listener to gameboard
         gameboard.addEventListener("click", boxClick)
