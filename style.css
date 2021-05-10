@@ -35,3 +35,11 @@ body {
 #reset {
     margin-top: 25px;
 }
+
+.playedX {
+    color: magenta;
+}
+
+.playedO {
+    color: yellowgreen;
+}
