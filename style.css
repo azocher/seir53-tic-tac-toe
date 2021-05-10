@@ -1,0 +1,37 @@
+body {
+    margin: 0 auto;
+}
+
+#main {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#displayTurn, #displayResults {
+    font-size: 36px;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: lightblue;
+}
+
+.gameTile {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.gameTile:hover {
+    background-color: blue;
+}
+
+#reset {
+    margin-top: 25px;
+}
