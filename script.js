@@ -77,13 +77,44 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // FUNCTION: gameOver() --> checks if winner of game
     function gameOver() {
-        console.log("hello")
-    }
+        // loop through all possible win combos (winCombo array)
+        for (let i = 0; i < winCombo.length; i++) {
+          // console.log(`Current array: ${winCombo[i]}`)
+      
+          // if user has had any matches for x or O so far AKA declare count for x and O
+          let winFoundX = 0
+          let winFoundO = 0
+      
+          // loop through individual win combo
+          for (let y = 0; y < winCombo[i].length; y++) {
+            //console.log(`Current id: ${winCombo[i][y]}`)
+            if (playerX.includes(winCombo[i][y])){
+              winFoundX++
+              if (winFoundX === 3) {
+                displayResults.innerText = "X has won the game!"
+                stopGame()
+              }
+            }
+      
+            if (playerO.includes(winCombo[i][y])) {
+              winFoundO++
+              if (winFoundO === 3) {
+                displayResults.innerText = "O has won the game!"
+                stopGame()
+              }
+            }
+          }
+        }
+      }
+
     //// check and see if there is a winner on every turn
     //// if player has won, run stopGame()
     ////// send message to displayResults div and displayTurn div
 
     // FUNCTION: stopGame() --> doesn't allow for further game play once game won
+    function stopGame() {
+        gameboard.removeEventListener("click", boxClick)
+    }
 
     // FUNCTION: resetGameboard() --> add event listener to #reset button on click
     //// loops through gameboard; resets all variables
