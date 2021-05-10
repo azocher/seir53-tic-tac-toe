@@ -26,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // FUNCTION: boxClick() --> triggers game tile play
     function boxClick(event) {
-        console.log(event)
         let tileCheck = event.target
 
         //// if box already played, alert user to find a new game tile to play
@@ -61,13 +60,25 @@ window.addEventListener("DOMContentLoaded", () => {
                 // push play id
                 playerO.push(tileCheck.id)
             }
+            //// if greater than 4 turns then check to see if game has been won
+            if (turnNum >= 4) {
+                gameOver()
+            }
+
             //// check and see if there have been x9 turns but no winner; call tied game
+            if (turnNum === 9) {
+                displayResults.innerText = "GAME TIED"
+                displayTurn.innerText = "PLAY AGAIN"
+            }
         }
     }
     // add event listener on user click of game tile
     gameboard.addEventListener("click", boxClick)
 
-    // FUNCTION: gameOver() --> once we have had more than four moves
+    // FUNCTION: gameOver() --> checks if winner of game
+    function gameOver() {
+        console.log("hello")
+    }
     //// check and see if there is a winner on every turn
     //// if player has won, run stopGame()
     ////// send message to displayResults div and displayTurn div
